@@ -6,13 +6,18 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  contents: write
+
 jobs:
   build-pdf:
-    name: Build LaTeX Document & Upload PDF
+    name: Build LaTeX Document & Auto-commit PDF
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
@@ -20,8 +25,19 @@ jobs:
           root_file: main.tex
           args: "-pdf -bibtex -f"
 
-      - name: Upload PDF Artifact
+      - name: Copy output PDF
+        run: |
+          cp main.pdf Bao_Cao_BTL_CO2001_NhomG2.pdf
+
+      - name: Upload PDF Artifact (for PR review)
         uses: actions/upload-artifact@v4
         with:
           name: Bao_Cao_BTL_CO2001_NhomG2
-          path: main.pdf
+          path: Bao_Cao_BTL_CO2001_NhomG2.pdf
+
+      - name: Auto-commit PDF to main branch
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "docs(build): auto-update compiled Bao_Cao_BTL_CO2001_NhomG2.pdf"
+          file_pattern: "Bao_Cao_BTL_CO2001_NhomG2.pdf"

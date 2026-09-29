@@ -33,3 +33,7 @@
 *.sav
 .DS_Store
 Thumbs.db
+
+# Ignore all generated PDF build files EXCEPT the official report file on main
+*.pdf
+!Bao_Cao_BTL_CO2001_NhomG2.pdf
