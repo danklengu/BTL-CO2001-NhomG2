@@ -1,0 +1,21 @@
+\subsection{Chu trình cộng tác Người-AI 6 bước và vai trò Human-in-the-loop}
+
+Dựa trên cách tiếp cận về kỹ năng và workflow của kỹ sư phần mềm trong bối cảnh AI \cite{kam2025what}, quá trình phát triển có thể được mô hình hóa thành một chu trình cộng tác giữa con người và AI gồm 6 bước:
+
+\begin{enumerate}
+    \item \textbf{Bước 1 -- Xác định yêu cầu (Identify):} Con người xác định mục tiêu, yêu cầu chức năng, ràng buộc kỹ thuật và tiêu chí đầu ra. Đây là bước cần sự hiểu biết về bài toán và bối cảnh thực tế, những yếu tố mà AI không nên tự quyết định hoàn toàn.
+    \item \textbf{Bước 2 -- Phân rã và giao nhiệm vụ (Engage):} Con người chia bài toán lớn thành các nhiệm vụ nhỏ hơn và cung cấp cho AI các yêu cầu, ngữ cảnh hoặc hướng dẫn phù hợp. Khả năng phân rã vấn đề giúp AI tạo ra kết quả có phạm vi và mục tiêu rõ ràng hơn.
+    \item \textbf{Bước 3 -- AI tạo hoặc đề xuất giải pháp (Generate/Propose):} AI hỗ trợ thực hiện các tác vụ như sinh mã nguồn, đề xuất thuật toán, giải thích mã, tạo test case hoặc đưa ra phương án xử lý. Ở bước này, AI đóng vai trò là công cụ hỗ trợ thực thi thay vì là chủ thể đưa ra quyết định cuối cùng.
+    \item \textbf{Bước 4 -- Con người kiểm tra và đánh giá (Evaluate):} Kết quả từ AI phải được con người xem xét về tính đúng đắn, khả năng đáp ứng yêu cầu, chất lượng mã nguồn, bảo mật và các rủi ro tiềm ẩn. Đây là một bước quan trọng vì đầu ra của AI có thể chứa lỗi hoặc không phù hợp với ngữ cảnh cụ thể.
+    \item \textbf{Bước 5 -- Kiểm thử và hiệu chỉnh (Calibrate \& Tweak):} Kết quả được đưa qua quá trình kiểm thử. Nếu phát hiện vấn đề, con người có thể điều chỉnh yêu cầu, cung cấp thêm thông tin cho AI hoặc tự sửa đổi kết quả. Quá trình này có thể lặp lại nhiều lần cho đến khi sản phẩm đạt yêu cầu.
+    \item \textbf{Bước 6 -- Tích hợp và chịu trách nhiệm (Finalize):} Kết quả đã được kiểm chứng được tích hợp vào hệ thống thực tế. Con người vẫn chịu trách nhiệm cuối cùng về quyết định đưa sản phẩm vào sử dụng, bao gồm chất lượng, bảo mật, tính phù hợp và các tác động có thể phát sinh.
+\end{enumerate}
+
+Chu trình trên thể hiện rõ vai trò của Human-in-the-loop (HITL). Con người không chỉ tham gia ở đầu vào bằng cách đưa yêu cầu cho AI mà còn xuất hiện xuyên suốt quá trình: xác định mục tiêu $\rightarrow$ hướng dẫn AI $\rightarrow$ đánh giá $\rightarrow$ kiểm thử $\rightarrow$ quyết định sử dụng. AI đảm nhiệm phần lớn các tác vụ có tính hỗ trợ và sinh nội dung, trong khi con người đảm nhiệm các hoạt động đòi hỏi hiểu biết về bối cảnh, phán đoán, kiểm chứng và trách nhiệm.
+
+Do đó, trong workflow có GenAI, mối quan hệ phù hợp không phải là ``Con người $\rightarrow$ AI $\rightarrow$ Kết quả'', mà là một vòng lặp cộng tác:
+\[
+\text{Con người} \rightarrow \text{AI} \rightarrow \text{Kiểm tra} \rightarrow \text{Hiệu chỉnh} \rightarrow \text{AI} \rightarrow \text{Kiểm tra} \rightarrow \dots \rightarrow \text{Kết quả cuối cùng}
+\]
+
+Điểm quan trọng của mô hình này là AI không loại bỏ con người khỏi quy trình phát triển phần mềm mà làm thay đổi vị trí và trọng tâm tham gia của con người. Kỹ sư phần mềm ngày càng cần chuyển từ việc chỉ tập trung vào ``viết mã'' sang khả năng định hướng, đánh giá, kiểm chứng và chịu trách nhiệm đối với kết quả do AI hỗ trợ tạo ra.
