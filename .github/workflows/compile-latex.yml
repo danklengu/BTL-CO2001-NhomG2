@@ -1,0 +1,27 @@
+name: Compile LaTeX Report PDF
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-pdf:
+    name: Build LaTeX Document & Upload PDF
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          args: "-pdf -bibtex -f"
+
+      - name: Upload PDF Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Bao_Cao_BTL_CO2001_NhomG2
+          path: main.pdf
